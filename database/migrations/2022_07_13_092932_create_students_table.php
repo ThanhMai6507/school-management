@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('classroom_id');
             $table->string('name');
             $table->string('address');
-            $table->string('gender');
+            $table->tinyInteger('gender');
             $table->timestamps();
         });
     }
