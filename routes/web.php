@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('grades')->name('grades.')->group(function () {
+    Route::get('', [GradeController::class, 'index'])->name('index');
+    Route::get('create', [GradeController::class, 'create'])->name('create');
+    Route::post('store', [GradeController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [GradeController::class, 'edit'])->name('edit');
+    Route::put('update/{id}', [GradeController::class, 'update'])->name('update');
+    Route::delete('delete/{id}', [GradeController::class, 'delete'])->name('delete');
 });
