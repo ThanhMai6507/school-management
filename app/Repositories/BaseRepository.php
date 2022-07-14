@@ -1,7 +1,6 @@
 <?php
-namespace App\Repositories;
 
-use App\Repositories\RepositoryInterface;
+namespace App\Repositories;
 
 abstract class BaseRepository implements RepositoryInterface
 {

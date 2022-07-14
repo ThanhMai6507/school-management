@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Repositories\Grade\GradeRepositoryInterface;
-use App\Models\Grade;
 use Illuminate\Http\Request;
-use Dflydev\DotAccessData\Data;
 
 class GradeController extends Controller
 {
@@ -32,15 +29,15 @@ class GradeController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $data = $request->all();
-        $grade = $this->gradeRepository->create($data);
+        $data = $request->only('name');
+        $this->gradeRepository->create($data);
 
         return redirect()->route('grades.index');
     }
 
     public function edit($id)
     {
-        $grade = Grade::find($id);
+        $grade = $this->gradeRepository->find($id);
         return view('grades.edit', [
             'grade' => $grade,
         ]);
@@ -48,7 +45,7 @@ class GradeController extends Controller
 
     public function update(Request $request, $id): \Illuminate\Http\RedirectResponse
     {
-        $data = $request->all();
+        $data = $request->only('name');
 
         $this->gradeRepository->update( $id, $data);
 

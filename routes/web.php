@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('grades', [\App\Http\Controllers\GradeController::class, 'index'])->name('grades.index');
-Route::get('grades/create', [\App\Http\Controllers\GradeController::class, 'create'])->name('grades.create');
-Route::post('grades/store', [\App\Http\Controllers\GradeController::class, 'store'])->name('grades.store');
-Route::get('grades/edit/{id}', [\App\Http\Controllers\GradeController::class, 'edit'])->name('grades.edit');
-Route::put('grades/update/{id}', [\App\Http\Controllers\GradeController::class, 'update'])->name('grades.update');
-Route::delete('grades/delete/{id}', [\App\Http\Controllers\GradeController::class, 'delete'])->name('grades.delete');
+Route::prefix('grades')->name('grades.')->group(function () {
+    Route::get('', [GradeController::class, 'index'])->name('index');
+    Route::get('create', [GradeController::class, 'create'])->name('create');
+    Route::post('store', [GradeController::class, 'store'])->name('store');
+    Route::get('edit/{id}', [GradeController::class, 'edit'])->name('edit');
+    Route::put('update/{id}', [GradeController::class, 'update'])->name('update');
+    Route::delete('delete/{id}', [GradeController::class, 'delete'])->name('delete');
+});
