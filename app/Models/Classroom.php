@@ -10,6 +10,7 @@ class Classroom extends Model
     use HasFactory;
 
     protected $fillable = [
+        'grade_id',
         'name',
     ];
 

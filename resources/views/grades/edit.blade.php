@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
 </head>
 
 <body>
@@ -25,6 +31,12 @@
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" value="{{ $grade->name }}">
+
+                                <p @error('name') class="error" @enderror>
+                                    @error('name')
+                                    <span>{{ $message }}</span>
+                                    @enderror
+                                </p>
                             </div>
 
                             <div class="mt-4 pt-2">

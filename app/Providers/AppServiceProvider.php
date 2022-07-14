@@ -15,7 +15,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Repositories\Grade\GradeRepositoryInterface::class,
-            \App\Repositories\Grade\GradeRepository::class
+            \App\Repositories\Grade\GradeRepository::class,
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Classroom\ClassroomRepositoryInterface::class,
+            \App\Repositories\Classroom\ClassroomRepository::class,
         );
     }
 
