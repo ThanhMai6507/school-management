@@ -39,13 +39,14 @@
         <tbody>
         @foreach($classrooms as $classroom)
             <tr>
+                <td>{{ $classroom->grade->name }}</td>
                 <td>{{ $classroom->name }}</td>
-                <td>{{ $classroom->grade_id }}</td>
                 <td>
                     <div class="button">
-                        <form class="action" action="{{ route('classrooms.edit', $classroom->id) }}" method="get">
-                            <input class="btn btn-primary btn-lg" type="submit" name="form_click" value="Edit" type="submit" value="Edit">
-                        </form>
+                        <a class="btn btn-primary" href="{{ route('classrooms.edit', $classroom->id) }}">Edit</a>
+{{--                        <form class="action" action="{{ route('classrooms.edit', $classroom->id) }}" method="get">--}}
+{{--                            <input class="btn btn-primary btn-lg" type="submit" name="form_click" value="Edit" type="submit" value="Edit">--}}
+{{--                        </form>--}}
 
                         <form class="action delete" action="{{ route('classrooms.delete', $classroom->id) }}" method="post">
                             @csrf

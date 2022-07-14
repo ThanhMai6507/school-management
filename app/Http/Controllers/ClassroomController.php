@@ -29,20 +29,21 @@ class ClassroomController extends Controller
 
     public function create()
     {
+        $classroom = $this->classroomRepository->getAll();
         $grades = $this->gradeRepository->getAll();
 
         return view('classrooms.create', [
-            'grades' => $grades
+            'grades' => $grades,
+            'classroom' => $classroom,
         ]);
     }
 
     public function store(ClassroomRequest $request): \Illuminate\Http\RedirectResponse
     {
-        $data = $request->only('name');
+        $data = $request->only(['grade_id', 'name']);
         $this->classroomRepository->create($data);
 
-        return redirect()->route('classrooms.index'
-        );
+        return redirect()->route('classrooms.index');
     }
 
     public function edit($id)
@@ -58,8 +59,8 @@ class ClassroomController extends Controller
 
     public function update(ClassroomRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
-        $data = $request->only('name');
-        $this->classroomRepository->update( $id, $data);
+        $data = $request->only(['grade_id', 'name']);
+        $this->classroomRepository->update($id, $data);
 
         return redirect()->route('classrooms.index');
     }

@@ -32,14 +32,14 @@
                                 <label for="name" class="form-label">Grade</label>
                                 <select name="grade_id" style="margin-bottom: 20px !important;" class="custom-select mr-sm-2" >
                                     @foreach($grades as $grade)
-                                        <option value="{{ $grade->id }}">{{ $grade->name }}</option>
+                                        <option value="{{ $grade->id }}" @if($classroom->grade->id == $grade->id) selected @endif>{{ $grade->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label for="name" class="form-label">Classroom</label>
-                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $classroom->name) }}">
 
                                 <p @error('name') class="error" @enderror>
                                     @error('name')

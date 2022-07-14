@@ -27,7 +27,6 @@
                             @csrf
 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Grade</label>
                                 <select name="grade_id" style="margin-bottom: 20px !important;" class="custom-select mr-sm-2" >
                                     @foreach($grades as $grade)
                                         <option value="{{ $grade->id }}">{{ $grade->name }}</option>
