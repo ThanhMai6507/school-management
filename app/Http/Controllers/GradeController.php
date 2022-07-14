@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GradeRequest;
 use App\Repositories\Grade\GradeRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Models\Grade;
 
 class GradeController extends Controller
 {
@@ -27,7 +29,7 @@ class GradeController extends Controller
         return view('grades.create');
     }
 
-    public function store(Request $request): \Illuminate\Http\RedirectResponse
+    public function store(GradeRequest $request): \Illuminate\Http\RedirectResponse
     {
         $data = $request->only('name');
         $this->gradeRepository->create($data);
