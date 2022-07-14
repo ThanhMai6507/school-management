@@ -13,8 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(
+            \App\Repositories\Grade\GradeRepositoryInterface::class,
+            \App\Repositories\Grade\GradeRepository::class
+        );
     }
+
 
     /**
      * Bootstrap any application services.
