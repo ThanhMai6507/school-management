@@ -10,10 +10,8 @@
     <style>
         .delete{
             float:right;
-            /* margin-left: 100px; */
         }
         .form{
-            /*margin-left: 30px;*/
             width: 100%;
         }
         .button{
@@ -23,6 +21,9 @@
         }
         .delete{
             margin-left: 20px;
+        }
+        .btn{
+            height: 48px !important;
         }
     </style>
 </head>
@@ -42,19 +43,15 @@
                 <td>{{ $classroom->grade->name }}</td>
                 <td>{{ $classroom->name }}</td>
                 <td>
-                    <div class="button">
+                    <div class="action">
                         <a class="btn btn-primary" href="{{ route('classrooms.edit', $classroom->id) }}">Edit</a>
-{{--                        <form class="action" action="{{ route('classrooms.edit', $classroom->id) }}" method="get">--}}
-{{--                            <input class="btn btn-primary btn-lg" type="submit" name="form_click" value="Edit" type="submit" value="Edit">--}}
-{{--                        </form>--}}
 
-                        <form class="action delete" action="{{ route('classrooms.delete', $classroom->id) }}" method="post">
+                        <form class="delete" action="{{ route('classrooms.delete', $classroom->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input class="btn btn-primary btn-lg" type="submit" name="form_click" value="Delete" type="submit" value="Delete">
                         </form>
                     </div>
-
                 </td>
             </tr>
         @endforeach
