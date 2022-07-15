@@ -11,4 +11,16 @@ class SubjectRepository extends BaseRepository implements SubjectRepositoryInter
     {
         return Subject::class;
     }
+
+    public function attachStudents($subjectId, $studentIds)
+    {
+        $subject = $this->find($subjectId);
+        $subject->students()->sync($studentIds);
+    }
+
+    public function detachStudents($subjectId, $studentIds)
+    {
+        $subject = $this->find($subjectId);
+        $subject->students()->detach($studentIds);
+    }
 }

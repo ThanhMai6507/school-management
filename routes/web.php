@@ -55,8 +55,14 @@ Route::prefix('subjects')->name('subjects.')->group(function () {
     Route::get('', [SubjectController::class, 'index'])->name('index');
     Route::get('create', [SubjectController::class, 'create'])->name('create');
     Route::post('store', [SubjectController::class, 'store'])->name('store');
-    Route::get('edit/{id}', [SubjectController::class, 'edit'])->name('edit');
-    Route::put('update/{id}', [SubjectController::class, 'update'])->name('update');
-    Route::delete('delete/{id}', [SubjectController::class, 'delete'])->name('delete');
-    Route::get('{id}/students', [SubjectController::class, 'students'])->name('students');
+    Route::get('{id}/edit', [SubjectController::class, 'edit'])->name('edit');
+    Route::put('{id}/update', [SubjectController::class, 'update'])->name('update');
+    Route::delete('{id}/delete', [SubjectController::class, 'delete'])->name('delete');
+
+    Route::prefix('{subjectId}/students')->name('students.')->group(function () {
+        Route::get('', [SubjectController::class, 'students'])->name('index');
+        Route::get('attach', [SubjectController::class, 'attachStudent'])->name('attach');
+        Route::post('attach', [SubjectController::class, 'doAttachStudent']);
+        Route::delete('{studentId}', [SubjectController::class, 'deleteStudent'])->name('delete');
+    });
 });

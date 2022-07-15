@@ -51,7 +51,7 @@
                             <input class="btn btn-primary btn-lg" type="submit" name="form_click" value="Delete" type="submit" value="Delete">
                         </form>
 
-                        <a class="btn btn-primary" href="{{ route('subjects.students', $subject->id) }}">Students</a>
+                        <a class="btn btn-primary" href="{{ route('subjects.students.index', $subject->id) }}">Students</a>
                     </div>
                 </td>
             </tr>
